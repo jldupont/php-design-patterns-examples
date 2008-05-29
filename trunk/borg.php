@@ -3,6 +3,9 @@
  * Borg pattern
  *  Variation on the Singleton pattern
  * 
+ * Executes this script and see the result
+ * matching the data provided at the bottom.
+ * 
  * @author Jean-Lou Dupont
  */
 
@@ -47,8 +50,9 @@ class Test
 	}
 }
 
-// EXAMPLE
-// =======
+/**
+ * 
+ */
 
 $a = new Test( __CLASS.": instance A" );
 $b = new Test( __CLASS.": instance B" );
@@ -59,3 +63,12 @@ echo $b->sharedState;
 
 $a->echoName();
 $b->echoName();
+
+__halt_compiler();
+/*****************************************************************
+ * 						RESULTS                                  *
+ *****************************************************************/
+
+Hi!
+Test: name= __CLASS: instance A
+Test: name= __CLASS: instance B
