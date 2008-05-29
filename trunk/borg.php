@@ -47,7 +47,7 @@ class Test
 	}
 	
 	public function echoName() {
-		echo __CLASS__.": name= ".$this->instanceData . "\n";
+		echo "Class: ".__CLASS__.", instance name= ".$this->instanceData . "\n";
 	}
 }
 
@@ -55,8 +55,8 @@ class Test
  * 						EXAMPLE                                  *
  *****************************************************************/
 
-$a = new Test( __CLASS.": instance A" );
-$b = new Test( __CLASS.": instance B" );
+$a = new Test( "instance A" );
+$b = new Test( "instance B" );
 
 $a->sharedState = "Hi!\n";
 
@@ -72,5 +72,5 @@ __halt_compiler();
  *****************************************************************/
 
 Hi!
-Test: name= __CLASS: instance A
-Test: name= __CLASS: instance B
+Class: Test, instance name= instance A
+Class: Test, instance name= instance B
