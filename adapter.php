@@ -1,8 +1,12 @@
 <?php
 /**
  * Adapter pattern
- * 
+ *
+ * Executes this script and see the result
+ * matching the data provided at the bottom.
+ *  
  * @author Jean-Lou Dupont
+ * PROJECT SITE: //http://php-design-patterns-examples.googlecode.com/
  */
 
 class Server {
@@ -24,7 +28,7 @@ class Adaptor {
 
 	public function method( $p1, $p2 ) {
 	
-		// the server just requires the two parameter
+		// the server just requires the two parameters
 		// to be presented in reverse-order
 		return $this->server->method( $p2, $p1 );
 	}
@@ -46,6 +50,10 @@ class Client {
 
 }
 
+/*****************************************************************
+ * 						EXAMPLE                                  *
+ *****************************************************************/
+
 $server = new Server;
 
 $adaptor = new Adaptor( $server );
@@ -53,3 +61,11 @@ $adaptor = new Adaptor( $server );
 $client = new Client( $adaptor );
 
 $client->execute();
+
+__halt_compiler();
+
+/*****************************************************************
+ * 						RESULTS                                  *
+ *****************************************************************/
+
+Parameter1: param1 , Parameter2: param2 
