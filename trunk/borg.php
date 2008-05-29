@@ -7,6 +7,7 @@
  * matching the data provided at the bottom.
  * 
  * @author Jean-Lou Dupont
+ * PROJECT SITE: //http://php-design-patterns-examples.googlecode.com/
  */
 
 class borg {
@@ -50,9 +51,9 @@ class Test
 	}
 }
 
-/**
- * 
- */
+/*****************************************************************
+ * 						EXAMPLE                                  *
+ *****************************************************************/
 
 $a = new Test( __CLASS.": instance A" );
 $b = new Test( __CLASS.": instance B" );
