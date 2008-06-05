@@ -168,4 +168,8 @@ __halt_compiler();
  * 						RESULTS                                  *
  *****************************************************************/
 
-Parameter1: param1 , Parameter2: param2 
+o1: class=  Test1
+o2: class=  Test2
+o3: class=  Test4
+o3: param1= req_param1 param2= req_param2
+ 
