@@ -28,12 +28,12 @@ function highlight( &$content ) {
 	return array( "style" => $style, "code" => $result );        
 }
 
-function saveResult( &$file, &$result, &$baseName ) {
+function saveResult( &$file, &$result, &$baseName, $suffix=".html" ) {
 
 	$path_parts = pathinfo( $file );
 	$baseName = $path_parts['basename'];
 
-	$target = $path_parts['dirname'].'/'.$path_parts['filename'].'.html';
+	$target = $path_parts['dirname'].'/'.$path_parts['filename'].$suffix;
 	
 	$bytes_written = file_put_contents( $target, $result );
 	
@@ -45,20 +45,35 @@ $srcPath = realpath( dirname( __FILE__ ).'/../' );
 echo "Processing path: $srcPath \n";
 
 $template = file_get_contents( dirname(__FILE__) . "/template.html" );
+$templateJS = file_get_contents( dirname(__FILE__) . "/template.js" );
+
+
 
 $files = glob( $srcPath."/*.php" );
 
 foreach( $files as $file ) {
 
+	$pagename = basename( $file, '.php' );
+
 	$content = file_get_contents( $file );
 	
 	$result = highlight( $content );
 
+	// HTML template
 	$page = str_replace( '%style%', $result['style'], $template );
 	$page = str_replace( '%body%',  $result['code'],  $page   );
 	
 	$baseName = null;
 	$r = saveResult( $file, $page, $baseName );
+	
+	echo "Result for '$baseName' is: " . ( $r ? 'success.' : 'failure.' )."\n";
+	
+	// JS template
+	$pageJS = str_replace( '%text%', json_encode($result), $templateJS );
+	$pageJS = str_replace( '%id%', $pagename, $pageJS );
+	
+	$baseName = null;
+	$r = saveResult( $file, $pageJS, $baseName, '.js' );
 	
 	echo "Result for '$baseName' is: " . ( $r ? 'success.' : 'failure.' )."\n";
 }
