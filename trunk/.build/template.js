@@ -6,7 +6,7 @@
  	
  	var text = '%text%';
 	var eid = '%id%';
-	var e; 		
+	var e, decoded_text; 		
 	
 	e = document.getElementById( eid );
 	 	
