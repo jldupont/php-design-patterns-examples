@@ -69,7 +69,8 @@ foreach( $files as $file ) {
 	echo "Result for '$baseName' is: " . ( $r ? 'success.' : 'failure.' )."\n";
 	
 	// JS template
-	$pageJS = str_replace( '%text%', json_encode($result), $templateJS );
+	#$pageJS = str_replace( '%text%', json_encode($result), $templateJS );
+	$pageJS = str_replace( '%text%', base64_encode($result['code']), $templateJS );
 	$pageJS = str_replace( '%id%', $pagename, $pageJS );
 	
 	$baseName = null;
