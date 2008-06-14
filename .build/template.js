@@ -4,15 +4,13 @@
  
  ( function() {
  	
- 	var text = %text%;
-	var code,e; 	
+ 	var text = '%text%';
 	var eid = '%id%';
+	var e; 		
 	
 	e = document.getElementById( eid );
 	 	
-	code = text.code.replace(/&nbsp;/g,"");
-	
-	eval( 'var decoded_text=' + decodeURIComponent( code ) );
+	decoded_text = Base64.decode( text );
 	
  	e.innerHTML = decoded_text;
  	
