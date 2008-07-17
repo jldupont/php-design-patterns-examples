@@ -8,6 +8,21 @@
  * @category AOP
  * @pattern borg
  * @pattern ObjectPool
+ * 
+ * @example 
+ *   
+ *  # $obj is a recyclable object of class 'Test'
+ *  # put it in the recycle bin
+ *  aop_object_pool::recycle( $obj );
+ *  
+ *  $obj2 = aop_object_pool( 'Test' );
+ *  # got one from the recycling bin?
+ *  if ( is_null( $obj2 ) )
+ *    $obj2 = new Test;
+ * 
+ * 
+ * http://php-design-patterns-examples@googlecode.com/
+ *  
  */
 
 class aop_object_pool {
