@@ -1,0 +1,1 @@
+Examples of designs patterns in PHP.
